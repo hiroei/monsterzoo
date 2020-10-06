@@ -51,30 +51,45 @@ public class MonsterZoo {
 		checkUserEggStatus(e);
 	}
 
+	int throwFluitsToMonster(int r) {
+		if(this.fruits>0){
+			System.out.println("フルーツを投げた！捕まえやすさが倍になる！");
+			this.fruits--;
+			r = r * 2;
+		}
+		return r;
+	}
+
+	void addUserMonster(int m) {
+		for(int j=0;j<userMonster.length;j++){
+			if(this.userMonster[j]==null){
+				this.userMonster[j]=this.monsterZukan[m];
+				break;
+			}
+		}
+	}
+
+	int throwBallToMonster(int m, int r) {
+		System.out.println(this.monsterZukan[m]+"にボールを投げた");
+		this.balls--;
+		if(this.monsterRare[m]<=r){//monsterRare[m]の値がr以下の場合
+			System.out.println(this.monsterZukan[m]+"を捕まえた！");
+			addUserMonster(m);
+			return 0;//ボール投げ終了
+		}else{
+			System.out.println(this.monsterZukan[m]+"に逃げられた！");
+			return 1;
+		}
+	}
+
 	void meetMonster() {
 		int m = (int)(this.monsterZukan.length*Math.random());//monsterZukanからランダムにモンスターを出す
 		System.out.println(this.monsterZukan[m]+"が現れた！");
 		for(int i=0;i<3&&this.balls>0;i++){//捕まえる or 3回ボールを投げるまで繰り返す
 			int r = (int)(6*Math.random());//0~5までの数字をランダムに返す
-			if(this.fruits>0){
-				System.out.println("フルーツを投げた！捕まえやすさが倍になる！");
-				this.fruits--;
-				r = r * 2;
-			}
-			System.out.println(this.monsterZukan[m]+"にボールを投げた");
-			this.balls--;
-			if(this.monsterRare[m]<=r){//monsterRare[m]の値がr以下の場合
-				System.out.println(this.monsterZukan[m]+"を捕まえた！");
-				for(int j=0;j<userMonster.length;j++){
-					if(this.userMonster[j]==null){
-						this.userMonster[j]=this.monsterZukan[m];
-						break;
-					}
-				}
-				break;//ボール投げ終了
-			}else{
-				System.out.println(this.monsterZukan[m]+"に逃げられた！");
-			}
+			r = throwFluitsToMonster(r);
+			int status = throwBallToMonster(m, r);
+			if(status==0) break;
 		}
 	}
 
@@ -105,7 +120,6 @@ public class MonsterZoo {
 		int flg1 = (int)(Math.random()*10);//0,1の場合はズーstation，7~9の場合はモンスター
 		if(flg1<=1){
 			runZooStation();
-			
 		}else if(flg1>=7){
 			meetMonster();
 		}
