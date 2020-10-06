@@ -93,6 +93,11 @@ public class MonsterZoo {
 		}
 	}
 
+	void clearEggStatus(int i) {
+		this.egg[i]=false;
+		this.eggDistance[i]=0.0;
+	}
+
 	void checkEggStatus() {
 		for(int i=0;i<this.egg.length;i++){
 			if(this.egg[i]==true&&this.eggDistance[i]>=3){
@@ -100,14 +105,8 @@ public class MonsterZoo {
 				int m = (int)(this.monsterZukan.length*Math.random());
 				System.out.println(this.monsterZukan[m]+"が産まれた！");
 
-				for(int j=0;j<userMonster.length;j++){
-					if(this.userMonster[j]==null){
-						this.userMonster[j]=this.monsterZukan[m];
-						break;
-					}
-				}
-				this.egg[i]=false;
-				this.eggDistance[i]=0.0;
+				addUserMonster(m);
+				clearEggStatus(i);
 			}
 		}
 	}
