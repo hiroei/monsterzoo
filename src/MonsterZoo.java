@@ -19,14 +19,17 @@ public class MonsterZoo {
 	String monsterZukan[] = new String[22];
 	double monsterRare[] = new double[22];
 
-	//呼び出すと1km distanceが増える
-	void move(){
-		this.distance++;
+	void updateEggDistance() {
 		for(int i=0;i<this.egg.length;i++){//卵は移動距離が進むと孵化するため，何km移動したかを更新する
 			if(this.egg[i]==true){
 				this.eggDistance[i]++;
 			}
 		}
+	}
+	//呼び出すと1km distanceが増える
+	void move(){
+		this.distance++;
+		updateEggDistance();
 
 		int flg1 = (int)(Math.random()*10);//0,1の場合はズーstation，7~9の場合はモンスター
 		if(flg1<=1){
