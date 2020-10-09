@@ -20,8 +20,15 @@ public class User {
 		for(int i=0;i<this.egg.length;i++){//卵は移動距離が進むと孵化するため，何km移動したかを更新する
 			if(this.egg[i]==true){
 				this.eggDistance[i]++;
-				//egg[i].updateDistance();
 			}
+		}
+	}
+
+	void addEggToUser(int i) {
+		if(this.egg[i]==false){
+			this.egg[i]=true;
+			this.eggDistance[i]=0.0;
+			System.out.println("卵を追加した");
 		}
 	}
 
@@ -29,11 +36,8 @@ public class User {
 		if(e>=1){//卵を1つ以上Getしたら
 			//egg[]に10個以上卵がない場合は新しい卵データをセットする
 			for(int i=0;i<this.eggDistance.length;i++){
-				if(this.egg[i]==false){
-					this.egg[i]=true;
-					this.eggDistance[i]=0.0;
-					break;
-				}
+				this.addEggToUser(i);
+				break;
 			}
 		}
 	}
