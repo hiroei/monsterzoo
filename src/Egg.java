@@ -1,6 +1,9 @@
 public class Egg{
-    double distance;
-    boolean exist;
+    //卵は最大9個まで持てる．卵を取得するとeggにtrueが代入され，
+	//移動するたびに,eggDistanceに1.0kmずつ加算される．
+	//3km移動するとランダムでモンスターが孵る
+    Double distance;
+    Boolean exist;
 
     Egg(){
         distance=0.0;

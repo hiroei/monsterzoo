@@ -9,8 +9,6 @@ public class User {
 	//卵は最大9個まで持てる．卵を取得するとeggにtrueが代入され，
 	//移動するたびに,eggDistanceに1.0kmずつ加算される．
 	//3km移動するとランダムでモンスターが孵る
-	// double eggDistance[] = new double[9];
-	// boolean egg[] = new boolean[9];
 
     //ユーザがGetしたモンスター一覧
 	List<String> userMonster;
@@ -33,7 +31,6 @@ public class User {
 		for(int i=0;i<this.egg.length;i++){//卵は移動距離が進むと孵化するため，何km移動したかを更新する
 			if(this.egg[i].exist==true){
 				this.egg[i].updateDistance();
-				// this.egg[i].distance++;
 			}
 		}
 	}
@@ -41,8 +38,6 @@ public class User {
 	void addEggToUser(int i) {
 		if(this.egg[i].exist==false){
 			this.egg[i].setEgg();
-			// this.eggDistance[i]=0.0;
-			// this.egg[i].distance=0.0;
 			this.egg[i].resetDistance();
 			System.out.println("卵を追加した");
 		}
