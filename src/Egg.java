@@ -11,7 +11,16 @@ public class Egg{
         exist=true;
     }
 
-    void updateEggDistance(){
+    void updateDistance(){
         distance++;
+    }
+
+    void resetDistance() {
+        distance = 0.0;
+    }
+
+    void clearAllStatus() {
+        exist=false;
+        distance=0.0;
     }
 }

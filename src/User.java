@@ -2,46 +2,48 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class User {
-    Double distance = Double.valueOf(0.0);//歩いた距離
-	Integer balls = Integer.valueOf(10);//モンスターを捕まえられるボールの数
-    Integer fruits = Integer.valueOf(0);//ぶつけるとモンスターが捕まえやすくなるフルーツ
+    Double distance;//歩いた距離
+	Integer balls;//モンスターを捕まえられるボールの数
+    Integer fruits;//ぶつけるとモンスターが捕まえやすくなるフルーツ
     
 	//卵は最大9個まで持てる．卵を取得するとeggにtrueが代入され，
 	//移動するたびに,eggDistanceに1.0kmずつ加算される．
 	//3km移動するとランダムでモンスターが孵る
-	// List<Double> eggDistance = new ArrayList<Double>();
 	// double eggDistance[] = new double[9];
-	// List<Boolean> egg = new ArrayList<Boolean>();
 	// boolean egg[] = new boolean[9];
 
     //ユーザがGetしたモンスター一覧
-	// String userMonster[] = new String[100];
-	List<String> userMonster = new ArrayList<String>();
+	List<String> userMonster;
 
-	private Egg[] egg;
+	private Egg[] egg; //ユーザが持っている卵
 
 	public User() {
 		egg = new Egg[9];
 		for(int i=0;i<9;i++) {
 			egg[i] = new Egg();
 		}
+
+		distance = Double.valueOf(0.0);
+		balls = Integer.valueOf(10);
+		fruits = Integer.valueOf(0);
+		userMonster = new ArrayList<String>();
 	}
 
 	void updateEggDistance() {
 		for(int i=0;i<this.egg.length;i++){//卵は移動距離が進むと孵化するため，何km移動したかを更新する
 			if(this.egg[i].exist==true){
-				// this.eggDistance[i]++;
-				this.egg[i].distance++;
+				this.egg[i].updateDistance();
+				// this.egg[i].distance++;
 			}
 		}
 	}
 
 	void addEggToUser(int i) {
 		if(this.egg[i].exist==false){
-			// this.egg[i].exist=true;
 			this.egg[i].setEgg();
 			// this.eggDistance[i]=0.0;
-			this.egg[i].distance=0.0;
+			// this.egg[i].distance=0.0;
+			this.egg[i].resetDistance();
 			System.out.println("卵を追加した");
 		}
 	}
@@ -104,11 +106,6 @@ public class User {
 			if(status==0) break;
 		}
 	}
-	
-	void clearEggStatus(int i) {
-		this.egg[i].exist=false;
-		this.egg[i].distance=0.0;
-	}
 
 	void checkEggStatus() {
 		for(int i=0;i<this.egg.length;i++){
@@ -118,7 +115,7 @@ public class User {
 				System.out.println(MonsterZoo.monsterZukan.get(m)+"が産まれた！");
 
 				addUserMonster(m);
-				clearEggStatus(i);
+				this.egg[i].clearAllStatus();
 			}
 		}
 	}
