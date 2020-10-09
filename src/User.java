@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.ArrayList;
 
 public class User {
@@ -16,9 +17,11 @@ public class User {
 
 	public User() {
 		egg = new Egg[9];
-		for(int i=0;i<9;i++) {
-			egg[i] = new Egg();
-		}
+		// for(int i=0;i<9;i++) {
+		IntStream.range(0, 9)
+			.forEach(value -> egg[value] = new Egg());
+			// egg[i] = new Egg();
+		// }
 
 		this.distance=0.0;
 		this.balls=10;
@@ -38,7 +41,6 @@ public class User {
 		if(this.egg[i].exist==false){
 			this.egg[i].setEgg();
 			this.egg[i].resetDistance();
-			System.out.println("卵を追加した");
 		}
 	}
 

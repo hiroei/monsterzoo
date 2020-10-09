@@ -1,3 +1,5 @@
+import java.util.stream.IntStream;
+
 public class Main {
 	static User usr = new User();
 	static MonsterZoo pz = new MonsterZoo();
@@ -32,10 +34,12 @@ public class Main {
 	}
 
 	public static void printResult() {
-		for(int i=0;i<usr.getUserMonster().size();i++){
-			if(usr.getUserMonster().get(i)!=null){
-				System.out.println(usr.getUserMonster().get(i)+"を捕まえた．");
-			}
-		}
+		// for(int i=0;i<usr.getUserMonster().size();i++){
+		// 	if(usr.getUserMonster().get(i)!=null){
+		// 		System.out.println(usr.getUserMonster().get(i)+"を捕まえた．");
+		// 	}
+		// }
+		usr.getUserMonster().stream()
+			.forEach(value -> System.out.println(value+"を捕まえた．"));
 	}
 }
