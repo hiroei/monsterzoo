@@ -12,9 +12,7 @@ public class Main {
 			try {
 				Thread.sleep(1000);
 				if(usr.getBalls()>0){
-					usr.move();
-					System.out.println("手持ちのボールは"+usr.getBalls()+"個，フルーツは"+usr.getFruits()+"個, 卵は"+usr.getEggs()+"個");
-					System.out.println(usr.getDistance()+"km歩いた．");
+					moveUser();
 				}else{
 					break;
 				}
@@ -25,11 +23,20 @@ public class Main {
 
 		System.out.println("ボールがなくなった！");
 
+		printResult();
+	}
+
+	public static void moveUser() {
+		usr.move();
+		System.out.println("手持ちのボールは"+usr.getBalls()+"個，フルーツは"+usr.getFruits()+"個, 卵は"+usr.getEggs()+"個");
+		System.out.println(usr.getDistance()+"km歩いた．");
+	}
+
+	public static void printResult() {
 		for(int i=0;i<usr.getUserMonster().size();i++){
 			if(usr.getUserMonster().get(i)!=null){
 				System.out.println(usr.getUserMonster().get(i)+"を捕まえた．");
 			}
 		}
 	}
-
 }
