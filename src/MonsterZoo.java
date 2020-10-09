@@ -4,18 +4,8 @@ import java.util.ArrayList;
 public class MonsterZoo {
 	//モンスター図鑑．モンスターの名前とレア度(0.0~9.0)がそれぞれの配列に保存されている
 	//レア度が高いほうが捕まえにくい
-	// static String monsterZukan[] = new String[22];
-	// static double monsterRare[] = new double[22];
 	static List<String> monsterZukan = new ArrayList<String>();
 	static List<Double> monsterRare = new ArrayList<Double>();
-
-	public void setMonsterZukan(List<String> monsterZukan) {
-		MonsterZoo.monsterZukan = monsterZukan;
-	}
-
-	public void setMonsterRare(List<Double> monsterRare) {
-		MonsterZoo.monsterRare = monsterRare;
-	}
 
 	//テスト用のモンスターデータを登録するメソッド
 	public void setMonsterZukan(){
@@ -45,7 +35,9 @@ public class MonsterZoo {
 		tempMonster.add("ゾエサン");	tempMonsterRare.add(5.0);
 		tempMonster.add("キタバー");	tempMonsterRare.add(3.0);
 
-		setMonsterZukan(tempMonster);
-		setMonsterRare(tempMonsterRare);
+		// setMonsterZukan(tempMonster);
+		MonsterZoo.monsterZukan = tempMonster;
+		// setMonsterRare(tempMonsterRare);
+		MonsterZoo.monsterRare = tempMonsterRare;
 	}
 }

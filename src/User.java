@@ -4,16 +4,15 @@ import java.util.ArrayList;
 public class User {
     Double distance;//歩いた距離
 	Integer balls;//モンスターを捕まえられるボールの数
-    Integer fruits;//ぶつけるとモンスターが捕まえやすくなるフルーツ
-    
+	Integer fruits;//ぶつけるとモンスターが捕まえやすくなるフルーツ
+
 	//卵は最大9個まで持てる．卵を取得するとeggにtrueが代入され，
 	//移動するたびに,eggDistanceに1.0kmずつ加算される．
 	//3km移動するとランダムでモンスターが孵る
+	private Egg[] egg; //ユーザが持っている卵
 
     //ユーザがGetしたモンスター一覧
 	List<String> userMonster;
-
-	private Egg[] egg; //ユーザが持っている卵
 
 	public User() {
 		egg = new Egg[9];
@@ -21,10 +20,10 @@ public class User {
 			egg[i] = new Egg();
 		}
 
-		distance = Double.valueOf(0.0);
-		balls = Integer.valueOf(10);
-		fruits = Integer.valueOf(0);
-		userMonster = new ArrayList<String>();
+		this.distance=0.0;
+		this.balls=10;
+		this.fruits=0;
+		this.userMonster = new ArrayList<String>();
 	}
 
 	void updateEggDistance() {

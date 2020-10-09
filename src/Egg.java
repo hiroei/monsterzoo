@@ -6,8 +6,8 @@ public class Egg{
     Boolean exist;
 
     Egg(){
-        distance=0.0;
-        exist=false;
+        this.distance=0.0;
+        this.exist=false;
     }
 
     void setEgg() {
