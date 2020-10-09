@@ -1,7 +1,7 @@
 public class User {
-    double distance=0.0;//歩いた距離
-	int balls=10;//モンスターを捕まえられるボールの数
-    int fruits=0;//ぶつけるとモンスターが捕まえやすくなるフルーツ
+    Double distance = Double.valueOf(0.0);//歩いた距離
+	Integer balls = Integer.valueOf(10);//モンスターを捕まえられるボールの数
+    Integer fruits = Integer.valueOf(0);//ぶつけるとモンスターが捕まえやすくなるフルーツ
     
 	//卵は最大9個まで持てる．卵を取得するとeggにtrueが代入され，
 	//移動するたびに,eggDistanceに1.0kmずつ加算される．
