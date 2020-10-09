@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.ArrayList;
+
 public class User {
     Double distance = Double.valueOf(0.0);//歩いた距離
 	Integer balls = Integer.valueOf(10);//モンスターを捕まえられるボールの数
@@ -6,8 +9,10 @@ public class User {
 	//卵は最大9個まで持てる．卵を取得するとeggにtrueが代入され，
 	//移動するたびに,eggDistanceに1.0kmずつ加算される．
 	//3km移動するとランダムでモンスターが孵る
-	double eggDistance[] = new double[9];
-	boolean egg[] = new boolean[9];
+	List<Double> eggDistance = new ArrayList<Double>();
+	// double eggDistance[] = new double[9];
+	List<Boolean> egg = new ArrayList<Boolean>();
+	// boolean egg[] = new boolean[9];
 
     //ユーザがGetしたモンスター一覧
 	String userMonster[] = new String[100];
@@ -17,17 +22,21 @@ public class User {
 	// }
 
 	void updateEggDistance() {
-		for(int i=0;i<this.egg.length;i++){//卵は移動距離が進むと孵化するため，何km移動したかを更新する
-			if(this.egg[i]==true){
-				this.eggDistance[i]++;
+		for(int i=0;i<this.egg.size();i++){//卵は移動距離が進むと孵化するため，何km移動したかを更新する
+			if(this.egg.get(i)==true){
+				// this.eggDistance[i]++;
+				Double value = this.eggDistance.get(i);
+				this.eggDistance.set(i, value++);
 			}
 		}
 	}
 
 	void addEggToUser(int i) {
-		if(this.egg[i]==false){
-			this.egg[i]=true;
-			this.eggDistance[i]=0.0;
+		if(this.egg.get(i)==false){
+			// this.egg[i]=true;
+			// this.eggDistance[i]=0.0;
+			this.egg.set(i, true);
+			this.eggDistance.set(i, 0.0);
 			System.out.println("卵を追加した");
 		}
 	}
@@ -35,7 +44,7 @@ public class User {
 	void checkUserEggStatus(int e) {
 		if(e>=1){//卵を1つ以上Getしたら
 			//egg[]に10個以上卵がない場合は新しい卵データをセットする
-			for(int i=0;i<this.eggDistance.length;i++){
+			for(int i=0;i<this.eggDistance.size();i++){
 				this.addEggToUser(i);
 				break;
 			}
@@ -96,13 +105,15 @@ public class User {
 	}
 	
 	void clearEggStatus(int i) {
-		this.egg[i]=false;
-		this.eggDistance[i]=0.0;
+		this.egg.set(i, false);
+		this.eggDistance.set(i, 0.0);
+		// this.eggDistance[i]=0.0;
 	}
 
 	void checkEggStatus() {
-		for(int i=0;i<this.egg.length;i++){
-			if(this.egg[i]==true&&this.eggDistance[i]>=3){
+		for(int i=0;i<this.egg.size();i++){
+			// if(this.egg[i]==true&&this.eggDistance[i]>=3){
+			if(this.egg.get(i)==true&&this.eggDistance.get(i)>=3){
 				System.out.println("卵が孵った！");
 				int m = (int)(MonsterZoo.monsterZukan.length*Math.random());
 				System.out.println(MonsterZoo.monsterZukan[m]+"が産まれた！");
