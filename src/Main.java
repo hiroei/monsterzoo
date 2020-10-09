@@ -1,6 +1,7 @@
 
 
 public class Main {
+	static User usr = new User();
 	static MonsterZoo pz = new MonsterZoo();
 
 	public static void main(String[] args) {
@@ -12,10 +13,10 @@ public class Main {
 		while(true){
 			try {
 				Thread.sleep(1000);
-				if(pz.getBalls()>0){
-					pz.move();
-					System.out.println("手持ちのボールは"+pz.getBalls()+"個，フルーツは"+pz.getFruits()+"個");
-					System.out.println(pz.getDistance()+"km歩いた．");
+				if(usr.getBalls()>0){
+					usr.move();
+					System.out.println("手持ちのボールは"+usr.getBalls()+"個，フルーツは"+usr.getFruits()+"個");
+					System.out.println(usr.getDistance()+"km歩いた．");
 				}else{
 					break;
 				}
@@ -26,9 +27,9 @@ public class Main {
 
 		System.out.println("ボールがなくなった！");
 
-		for(int i=0;i<pz.getUserMonster().length;i++){
-			if(pz.getUserMonster()[i]!=null){
-				System.out.println(pz.getUserMonster()[i]+"を捕まえた．");
+		for(int i=0;i<usr.getUserMonster().length;i++){
+			if(usr.getUserMonster()[i]!=null){
+				System.out.println(usr.getUserMonster()[i]+"を捕まえた．");
 			}
 		}
 	}
