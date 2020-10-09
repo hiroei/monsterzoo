@@ -105,13 +105,9 @@ public class User {
 
 	void checkEggStatus() {
 		for(int i=0;i<this.egg.length;i++){
-			if(this.egg[i].exist==true&&this.egg[i].distance>=3){
-				System.out.println("卵が孵った！");
-				int m = (int)(MonsterZoo.monsterZukan.size()*Math.random());
-				System.out.println(MonsterZoo.monsterZukan.get(m)+"が産まれた！");
-
-				addUserMonster(m);
-				this.egg[i].clearAllStatus();
+			int mons = this.egg[i].checkStatus();
+			if(mons>-1) {
+				addUserMonster(mons);
 			}
 		}
 	}

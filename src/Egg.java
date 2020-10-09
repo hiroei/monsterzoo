@@ -26,4 +26,15 @@ public class Egg{
         exist=false;
         distance=0.0;
     }
+
+    int checkStatus() {
+		if(exist==true&&distance>=3){
+			System.out.println("卵が孵った！");
+			int m = (int)(MonsterZoo.monsterZukan.size()*Math.random());
+			System.out.println(MonsterZoo.monsterZukan.get(m)+"が産まれた！");
+            clearAllStatus();
+            return m;
+        }
+        return -1;
+	}
 }
