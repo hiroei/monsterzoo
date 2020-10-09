@@ -1,4 +1,5 @@
-
+import java.util.List;
+import java.util.ArrayList;
 
 public class Main {
 	static User usr = new User();
@@ -15,7 +16,7 @@ public class Main {
 				Thread.sleep(1000);
 				if(usr.getBalls()>0){
 					usr.move();
-					System.out.println("手持ちのボールは"+usr.getBalls()+"個，フルーツは"+usr.getFruits()+"個");
+					System.out.println("手持ちのボールは"+usr.getBalls()+"個，フルーツは"+usr.getFruits()+"個, 卵は"+usr.getEggs()+"個");
 					System.out.println(usr.getDistance()+"km歩いた．");
 				}else{
 					break;
@@ -27,39 +28,42 @@ public class Main {
 
 		System.out.println("ボールがなくなった！");
 
-		for(int i=0;i<usr.getUserMonster().length;i++){
-			if(usr.getUserMonster()[i]!=null){
-				System.out.println(usr.getUserMonster()[i]+"を捕まえた．");
+		for(int i=0;i<usr.getUserMonster().size();i++){
+			if(usr.getUserMonster().get(i)!=null){
+				System.out.println(usr.getUserMonster().get(i)+"を捕まえた．");
 			}
 		}
 	}
 
 	//テスト用のモンスターデータを登録するメソッド
 	public static void setMonsterZukan(){
-		String tempMonster[] = new String[22];
-		double tempMonsterRare[] = new double[22];
-		tempMonster[0]="イガキン";	tempMonsterRare[0]=9;
-		tempMonster[1]="ナマチュウ";	tempMonsterRare[1]=3;
-		tempMonster[2]="イノウエン";	tempMonsterRare[2]=1;
-		tempMonster[3]="リョージィ";	tempMonsterRare[3]=2;
-		tempMonster[4]="アキモトン";	tempMonsterRare[4]=5;
-		tempMonster[5]="ゴージマ";	tempMonsterRare[5]=4;
-		tempMonster[6]="チュウデン";	tempMonsterRare[6]=6;
-		tempMonster[7]="ヅカホン";	tempMonsterRare[7]=8;
-		tempMonster[8]="ニシムラー";	tempMonsterRare[8]=7;
-		tempMonster[9]="サコーデン";	tempMonsterRare[9]=2;
-		tempMonster[10]="ウッチー";	tempMonsterRare[10]=5;
-		tempMonster[11]="ハヤッシー";	tempMonsterRare[11]=4;
-		tempMonster[12]="キーチー";	tempMonsterRare[12]=3;
-		tempMonster[13]="リョクン";	tempMonsterRare[13]=1;
-		tempMonster[14]="デコポン";	tempMonsterRare[14]=6;
-		tempMonster[15]="カミサン";	tempMonsterRare[15]=5;
-		tempMonster[16]="シスイ";	tempMonsterRare[16]=1;
-		tempMonster[17]="ジョナ";	tempMonsterRare[17]=7;
-		tempMonster[18]="ギダギダ";	tempMonsterRare[18]=2;
-		tempMonster[19]="ミッツー";	tempMonsterRare[19]=8;
-		tempMonster[20]="ゾエサン";	tempMonsterRare[20]=5;
-		tempMonster[21]="キタバー";	tempMonsterRare[21]=3;
+		// String tempMonster[] = new String[22];
+		List<String> tempMonster = new ArrayList<String>();
+
+		// double tempMonsterRare[] = new double[22];
+		List<Double> tempMonsterRare = new ArrayList<Double>();
+		tempMonster.add("イガキン");	tempMonsterRare.add(9.0);
+		tempMonster.add("ナマチュウ");	tempMonsterRare.add(3.0);
+		tempMonster.add("イノウエン");	tempMonsterRare.add(1.0);
+		tempMonster.add("リョージィ");	tempMonsterRare.add(2.0);
+		tempMonster.add("アキモトン");	tempMonsterRare.add(5.0);
+		tempMonster.add("ゴージマ");	tempMonsterRare.add(4.0);
+		tempMonster.add("チュウデン");	tempMonsterRare.add(6.0);
+		tempMonster.add("ヅカホン");	tempMonsterRare.add(8.0);
+		tempMonster.add("ニシムラー");	tempMonsterRare.add(7.0);
+		tempMonster.add("サコーデン");	tempMonsterRare.add(2.0);
+		tempMonster.add("ウッチー");	tempMonsterRare.add(5.0);
+		tempMonster.add("ハヤッシー");	tempMonsterRare.add(4.0);
+		tempMonster.add("キーチー");	tempMonsterRare.add(3.0);
+		tempMonster.add("リョクン");	tempMonsterRare.add(1.0);
+		tempMonster.add("デコポン");	tempMonsterRare.add(6.0);
+		tempMonster.add("カミサン");	tempMonsterRare.add(5.0);
+		tempMonster.add("シスイ");	    tempMonsterRare.add(1.0);
+		tempMonster.add("ジョナ"); 	    tempMonsterRare.add(7.0);
+		tempMonster.add("ギダギダ");	tempMonsterRare.add(2.0);
+		tempMonster.add("ミッツー");	tempMonsterRare.add(8.0);
+		tempMonster.add("ゾエサン");	tempMonsterRare.add(5.0);
+		tempMonster.add("キタバー");	tempMonsterRare.add(3.0);
 
 		pz.setMonsterZukan(tempMonster);
 		pz.setMonsterRare(tempMonsterRare);
