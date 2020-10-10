@@ -9,24 +9,27 @@ public class Main {
 		//1000ミリ秒（1秒）ずつ止まりながらpz.move()を呼び出し続ける
 		//手持ちのボールが無くなったら終了
 		while(true){
-			try {
-				Thread.sleep(1000);
-				if(usr.getBalls()>0){
-					moveUser();
-				}else{
-					break;
-				}
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			int flag = tryMoveUser();
+			if(flag==1) break;
 		}
 
 		System.out.println("ボールがなくなった！");
 		usr.outputMonsters();
 	}
 
-	public static void moveUser() {
-		usr.move();
-		usr.outputStatus();
+	public static int tryMoveUser() {
+		try {
+			Thread.sleep(1000);
+			if(usr.getBalls()>0){
+				usr.move();
+				usr.outputStatus();
+				return 0;
+			}else{
+				return 1;
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			return -1;
+		}
 	}
 }
