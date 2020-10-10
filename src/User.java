@@ -17,11 +17,8 @@ public class User {
 
 	public User() {
 		egg = new Egg[9];
-		// for(int i=0;i<9;i++) {
 		IntStream.range(0, 9)
 			.forEach(value -> egg[value] = new Egg());
-			// egg[i] = new Egg();
-		// }
 
 		this.distance=0.0;
 		this.balls=10;
@@ -37,18 +34,11 @@ public class User {
 		}
 	}
 
-	void addEggToUser(int i) {
-		if(this.egg[i].exist==false){
-			this.egg[i].setEgg();
-			this.egg[i].resetDistance();
-		}
-	}
-
-	void checkUserEggStatus(int e) {
+	void addUserEgg(int e) {
 		if(e>=1){//卵を1つ以上Getしたら
 			//egg[]に10個以上卵がない場合は新しい卵データをセットする
 			for(int i=0;i<this.egg.length;i++){
-				this.addEggToUser(i);
+				this.egg[i].addToUser();
 				break;
 			}
 		}
@@ -62,7 +52,7 @@ public class User {
 		System.out.println("ボールを"+b+"個，"+"フルーツを"+f+"個"+"卵を"+e+"個Getした！");
 		this.balls=this.balls+b;
 		this.fruits=this.fruits+f;
-		checkUserEggStatus(e);
+		addUserEgg(e);
 	}
 
 	int throwFluitsToMonster(int r) {

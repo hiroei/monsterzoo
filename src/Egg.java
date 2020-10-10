@@ -27,6 +27,13 @@ public class Egg{
         distance=0.0;
     }
 
+    void addToUser() {
+        if(exist==false){
+			setEgg();
+			resetDistance();
+		}
+    }
+
     int checkStatus() {
 		if(exist==true&&distance>=3){
 			System.out.println("卵が孵った！");
