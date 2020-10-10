@@ -137,9 +137,5 @@ public class User {
 		userMonster.stream()
 			.forEach(value -> System.out.println(value+"を捕まえた．"));
 	}
-
-	// public List<String> getUserMonster() {
-	// 	return userMonster;
-	// }
 	
 }

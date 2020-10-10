@@ -35,9 +35,7 @@ public class MonsterZoo {
 		tempMonster.add("ゾエサン");	tempMonsterRare.add(5.0);
 		tempMonster.add("キタバー");	tempMonsterRare.add(3.0);
 
-		// setMonsterZukan(tempMonster);
 		MonsterZoo.monsterZukan = tempMonster;
-		// setMonsterRare(tempMonsterRare);
 		MonsterZoo.monsterRare = tempMonsterRare;
 	}
 }
