@@ -102,6 +102,11 @@ public class User {
 		}
 	}
 
+	void outputStatus(){
+		System.out.println("手持ちのボールは"+balls+"個，フルーツは"+fruits+"個, 卵は"+calcEggCount()+"個");
+		System.out.println(distance+"km歩いた．");
+	}
+
 	//呼び出すと1km distanceが増える
 	void move(){
 		this.distance++;
@@ -116,19 +121,11 @@ public class User {
 		checkEggStatus();
 	}
 
-	public double getDistance() {
-		return distance;
-	}
-
 	public int getBalls() {
 		return balls;
 	}
 
-	public int getFruits() {
-		return fruits;
-	}
-
-	public int getEggs() {
+	public int calcEggCount() {
 		int eggCount=0;
 		for(Egg b : this.egg) {
 			if(b.exist==true) eggCount++;
@@ -136,8 +133,13 @@ public class User {
 		return eggCount;
 	}
 
-	public List<String> getUserMonster() {
-		return userMonster;
+	void outputMonsters() {
+		userMonster.stream()
+			.forEach(value -> System.out.println(value+"を捕まえた．"));
 	}
+
+	// public List<String> getUserMonster() {
+	// 	return userMonster;
+	// }
 	
 }

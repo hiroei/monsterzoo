@@ -22,17 +22,11 @@ public class Main {
 		}
 
 		System.out.println("ボールがなくなった！");
-		printResult();
+		usr.outputMonsters();
 	}
 
 	public static void moveUser() {
 		usr.move();
-		System.out.println("手持ちのボールは"+usr.getBalls()+"個，フルーツは"+usr.getFruits()+"個, 卵は"+usr.getEggs()+"個");
-		System.out.println(usr.getDistance()+"km歩いた．");
-	}
-
-	public static void printResult() {
-		usr.getUserMonster().stream()
-			.forEach(value -> System.out.println(value+"を捕まえた．"));
+		usr.outputStatus();
 	}
 }
